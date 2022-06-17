@@ -1,5 +1,6 @@
 use rand::Rng;
 use std::cmp::Ordering;
+use colored::Colorize;
 fn main() {
     println!("Welcome to guesting game!");
     let sercet_number:u32 = rand::thread_rng().gen_range(1..101);
@@ -24,10 +25,10 @@ fn main() {
         //println!("Secret number is {}", sercet_number);
 
         match num.cmp(&sercet_number) {
-            Ordering::Less => println!("Lesser!"),
-            Ordering::Greater => println!("Greater!"),
+            Ordering::Less => println!("{}","Lesser!".red()),
+            Ordering::Greater => println!("{}","Greater!".blue()),
             Ordering::Equal =>{
-                println!("Well done!");
+                println!("{}","Well done!".yellow().bold());
                 break;
             } ,
         }
