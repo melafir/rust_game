@@ -16,9 +16,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build
-      run: cargo build --verbose
-    - name: Copy file
+      name: Build
+    - run: cargo build --verbose
+      name: Copy file
     # You may pin to the exact commit or the version.
     # uses: canastro/copy-action@7ddff6fc153a2ea2cd0fb88ed9750544c051e399
     - uses: canastro/copy-action@0.0.2
