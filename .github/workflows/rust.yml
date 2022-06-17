@@ -1,0 +1,41 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  buildlinux:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      name: Build
+    - run: cargo build --verbose
+      name: Create Linux folder in repo
+    - run: mkdir ./linux 
+      name: Upload a Build Artifact
+    - uses: actions/upload-artifact@v3.1.0
+      with:
+        # Artifact name
+        path: target/debug/gameapp
+  buildwin:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      name: Build
+    - run: cargo build --verbose     
+      name: Upload a Build Artifact
+    - uses: actions/upload-artifact@v3.1.0
+      with:
+        # Artifact name
+        path: target\debug\gameapp.*
+     
